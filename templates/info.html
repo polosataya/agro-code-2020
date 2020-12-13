@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Повышение урожайности космической клубники</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static\styles.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        html { height: 100% }
+         body {
+  background: url("static/fon.png"), linear-gradient(180deg, #414086 0%, #7A54B8 100%);
+  margin: auto;
+  overflow-x:hidden;
+}
+   .knopka {
+transform: translate(-50%, 0);
+       border:1px solid #4B0082;
+       justify-content: center;
+       color: white;
+       background: linear-gradient(180deg, #845AA6 0%, #28276F 100%);
+border-radius: 10px;
+       text-align: center;
+       cursor: pointer;
+       min-width: 180px;
+       margin-top: 1%;
+       margin-left: 37%;
+       margin-right: 63%;
+       margin-bottom: 1%;
+   }
+   .right {
+       position: relative;
+       background: url(static/Screenshot_1257.png);
+       background-size: cover;
+       border-radius: 20px;
+       text-align: center;
+       float: left;
+       min-width: 300px;
+       min-height: 200px;
+       margin-top: 10%;
+       margin-left: 12%;
+       width: 50%;
+       height: 10%;
+       margin-right: 5%;
+   }
+   .contpanel {
+       position: absolute;
+  width: 10%;
+  height: 100%;
+       border: none;
+       margin-left: -5%;
+       float: left;
+   }
+   .left {
+
+       position: relative;
+     float: right;
+       margin-top: 10%;
+       margin-right: -10%;
+       margin-left: auto;
+   }
+    .temper[type=range][orient=vertical] {
+        writing-mode: bt-lr;
+        -webkit-appearance: slider-vertical;
+        display: block;
+        margin: 0 auto;
+        background: #4CAF50;
+        cursor: pointer; /* Cursor on hover */
+    }
+.temper[type=range][orient=vertical]::-webkit-slider-thumb {
+
+}
+
+    </style>
+</head>
+
+<body>
+<div id="container" style="width:1080px;margin:0 auto; background-repeat: no-repeat;">
+    <div class="container py-5" style="background-repeat: no-repeat">
+
+        <ul class="nav nav-pills" id="myTab" role="tablist" style="background-repeat: no-repeat">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Приложение</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">Калькулятор</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Отчеты</a>
+            </li>
+        </ul>
+
+        <div class="tab-content py-4" id="myTabContent">
+
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <p style="color:white"> Важность параметров выращивания </p>
+                <img src="static/importance.png" style="max-height:600px;max-width:600px;height:auto;width:auto;"/>
+                <div class="container mx-auto">
+                    <p style="color:white">Год: 2055</p>
+                        <label for="season" style="color:white" class=" col-lg-5 col-form-label">Сезон</label>
+                            <div class="col-lg-7">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    {% for x in data.season %}
+                                        <label class="btn btn-outline-secondary{{' active' if x=='весна' else ''}}">
+                                            <input type="radio" class="season" name="moisture" value="{{x}}" autocomplete="off" {{ ' checked' if x=='весна' else ''}}>{{x}}
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        <p style="color:white"> При текущих параметрах </p>
+                        <div class="col-lg-8">
+                            <!--<h4 class="display-5">Урожай: <span id="result">0</span></h4>/-->
+                            <span class="display-5" id="season_raw_images"><img src="static/raw_1.jpg"/></span>
+                        </div>
+
+                        <p style="color:white"> При оптимальных параметрах </p>
+                        <div class="col-lg-8">
+                            <!--<h4 class="display-5">Урожай: <span id="result">0</span></h4>/-->
+                            <span class="display-5" id="season_res_images"><img src="static/res_1.jpg"/></span>
+                        </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+                <div class="container mx-auto">
+                    <h3 class="main">Задайте параметры выращивания клубники</h3>
+                    <form id="predictForm">
+                        <div class="container">
+    <div class="contpanel">
+        <div style="padding-top: 65%; width: 100%; padding-bottom: 100%;">
+            <label for="temperature" class="param" style="text-align: center; margin-left: 10%;margin-right: 10%; font-size: 14pt; width: 90%;">Температура: <span id="rangeValue3"> 00</span></label>
+            <span style="text-align: center;" id="tem1"></span>
+  <div style="margin-top: 10%; text-align: center" data-toggle="collapse">
+      <label style="border: none; width:auto;" class="te btn{{' active' if x=='20' else ''}}">
+   <input style="width: 5px;" list="rangeList0" class="temper" orient="vertical" onchange="document.getElementById('rangeValue3').innerHTML = this.value;" type="range" name="temperature" min="0" max="40" step="5" value="0" autocomplete="off" {{ ' checked' if x=='20' else ''}}>{{x}}
+      <datalist id="rangeList0">
+<option value="0" label="50">
+<option value="5" label="55">
+<option value="10" label="60">
+       <option value="15" label="65">
+       <option value="20" label="70">
+       <option value="25" label="75">
+       <option value="30" label="80">
+       <option value="35" label="85">
+       <option value="40" label="90">
+</datalist>
+          </label>
+  </div>
+
+        </div>
+  </div>
+                                    <div class="left">
+                                    <div class="">
+                                        <label for="lighting" class="param">Освещенность: <span id="rangeValue">00</span></label>
+                                        <div class="col-lg-7" style="padding: 0">
+                                            <div style="padding-bottom: 20px; padding-top: -10px;" class="btn-group btn-group-toggle" data-toggle="collapse">
+                                                <label class="osv btn {{' active' if x=='20' else ''}}">
+                                                    <input list="rangeList1" onchange="document.getElementById('rangeValue').innerHTML = this.value;" style="width: 300px; float: left;" type="range" min="5" max="55" step="5" name="lighting" value="0"
+                                                           autocomplete="off" {{ ' checked' if x=='20' else ''}}>{{x}}
+   <datalist id="rangeList1">
+<option value="0" label="0">
+<option value="5" label="5">
+<option value="10" label="10">
+       <option value="15" label="15">
+       <option value="20" label="20">
+       <option value="25" label="25">
+       <option value="30" label="30">
+       <option value="35" label="35">
+       <option value="40" label="40">
+       <option value="45" label="45">
+       <option value="50" label="50">
+       <option value="55" label="55">
+</datalist>
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+                                        <label for="moisture" class="param">Влажность почвы: <span id="rangeValue2">00</span></label>
+                                        <div class="col-lg-7" style="padding: 0">
+                                            <div style="padding-bottom: 20px; padding-top: -10px;" class="btn-group btn-group-toggle" data-toggle="collapse">
+                                                <label class="vl btn {{' active' if x=='80' else ''}}">
+                                                    <input style="width: 300px" list="rangeList2" onchange="document.getElementById('rangeValue2').innerHTML = this.value;" type="range" name="moisture" min="50" max="90" step="5" value="0" autocomplete="off" {{ ' checked' if x=='80' else ''}}>{{x}}
+         <datalist id="rangeList2">
+<option value="50" label="50">
+<option value="55" label="55">
+<option value="60" label="60">
+       <option value="65" label="65">
+       <option value="70" label="70">
+       <option value="75" label="75">
+       <option value="80" label="80">
+       <option value="85" label="85">
+       <option value="90" label="90">
+</datalist>
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+                                        <label for="acidity" class="param">Кислотность почвы: <span id="rangeValue4">00</span></label>
+                                        <div class="col-lg-7" style="padding: 0">
+                                            <div style="padding-bottom: 20px; padding-top: -10px;" class="btn-group btn-group-toggle" data-toggle="collapse">
+
+                                                <label class="kis btn {{' active' if x=='7.0' else ''}}">
+                                                    <input style="width: 300px" list="rangeList4" type="range" name="acidity" onchange="document.getElementById('rangeValue4').innerHTML = this.value;" min="5.5" max="8.5" step="0.5" value="0" autocomplete="off" {{ ' checked' if x=='7.0' else ''}}>{{x}}
+         <datalist id="rangeList4">
+<option value="5.5" label="5.5">
+<option value="6.0" label="6.0">
+       <option value="6.5" label="6.5">
+       <option value="7.0" label="7.0">
+       <option value="7.5" label="7.5">
+       <option value="8.0" label="8.0">
+       <option value="8.5" label="8.5">
+</datalist>
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        <div style="text-align: center;" id="section">
+                            <div class="right">
+                                <span class="display-5" id="result_images"></span>
+                            </div>
+                            <button id="predictBtn" type="submit" class="btn knopka">Собрать урожай</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
+                <div style="text-align: center;" class="container mx-auto">
+<h1 style="margin: 5% 0;text-align: center; color: white;">Изменение температуры по дням для каждого сбора урожая</h1>
+                    <iframe src="static/temperature.html"  width="900" height="600" align="center"></iframe>
+<h1 style="margin: 5% 0;text-align: center; color: white;">Изменение освещенности по дням для каждого сбора урожая</h1>
+                    <iframe src="static/lighting.html"  width="900" height="600" align="center"></iframe>
+<h1 style="margin: 5% 0;text-align: center; color: white;">Изменение влажности почвы по дням для каждого сбора урожая</h1>
+                    <iframe src="static/moisture.html"  width="900" height="600" align="center"></iframe>
+<h1 style="margin: 5% 0;text-align: center; color: white;">Изменение кислотности почвы по дням для каждого сбора урожая</h1>
+                    <iframe src="static/acidity.html"  width="900" height="600" align="center"></iframe>
+
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+
+<script>
+    $(document).ready(function() {
+        $('#predictForm').submit(function(e) {
+            $('#predictBtn').prop('disabled', true);
+            $('#result').html('<div class="spinner-border text-secondary"></div>');
+            e.preventDefault();
+            //console.log($(this).serialize());
+            $.ajax({
+                url: '/predict',
+                data: $(this).serialize(),
+                type: 'POST',
+                success: function(data) {
+                    $('#result').text(data);
+                    let n = parseInt(data);
+                    let tpl = '<img src="static/image.png" style="max-height:60px;max-width:60px;height:auto;width:auto;"/>';
+                    s = tpl.repeat(n);
+                    $('#result_images').html(s);
+                    //$('#amount').text(data.amount);
+                    //$('#size').text(data.size);
+                    //$('#taste').text(data.taste);
+                },
+                complete: function(data) {
+                    $('#predictBtn').prop('disabled', false);
+                }
+            });
+        });
+
+        $('.season').on('change', function(event){
+            let v = event.currentTarget.value;
+            h = {'весна':1, 'лето':2, 'осень':3, 'зима':4};
+            $('#season_raw_images').html('<img src="static/raw_'+h[v]+'.jpg"/>');
+            $('#season_res_images').html('<img src="static/res_'+h[v]+'.jpg"/>');
+        });
+
+        function onreadystatechangeHandler(evt) {
+            var status, text, readyState;
+            try {
+                readyState = evt.target.readyState;
+                text = evt.target.responseText;
+                status = evt.target.status;
+            } catch (e) {
+                return;
+            }
+            data = evt.target.responseText;
+            if (readyState == 4 && status == '200') {
+                if (evt.target.responseText) {
+                    $('#csv_result').text(data);
+                }
+                $('#upload_progress').html('');
+            }
+        }
+        $('#uploadForm').submit(function(e) {
+            e.preventDefault();
+            $('#upload_progress').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+            var form = document.getElementById('uploadForm');
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener('readystatechange', onreadystatechangeHandler, false);
+            xhr.open('POST', '/upload', true);
+            xhr.send(formData);
+        });
+    });
+</script>
+
+</html>

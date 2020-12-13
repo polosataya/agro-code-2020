@@ -1,0 +1,145 @@
+
+
+.main {
+	color: floralwhite;
+	text-align: center;
+	width: 100%;
+	margin: 1%;
+}
+
+.tex {
+	margin-bottom: 100%;
+}
+
+
+.all {
+	width: 100%;
+}
+
+.param {
+	color: white;
+	border-radius: 20px;
+	width: 100%;
+	float: left;
+text-align: center;
+justify-content: center;
+margin-bottom: 1%;
+}
+
+.contleft {
+	margin-right: 20%;
+	float:left;
+	width: 40%;
+}
+.contright {
+	float: left;
+	min-height: 300px;
+	margin: 10px;
+	width: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+}
+
+
+   
+   .tepl1 {
+	   text-align: center;
+	   float: left;
+	   margin-left: 10%;
+	   margin-right: 10%;
+
+   }
+   img {
+	   width: 66px;
+height: 85px;
+   }
+   .tepl11 {
+	   text-align: center;
+	   margin-left: 10%;
+	   margin-right: 10%;
+	   width: 80%;
+	   height: 20%;
+	   float: left;
+	   margin-bottom: 1px;
+   }
+   
+   .yach {
+	   position: relative;
+	   text-align: center;
+	   left: 47%;
+	   height: 5%;
+	   width: 5%;
+	   background: white;
+	   border: 1px solid black;
+   }
+   
+   .par {
+	   text-align: center;
+	   color: red;
+   }
+
+   .rez {
+	   text-align: center;
+	    display: flex;
+  justify-content: center;
+   }
+
+/* Mouse-over effects */
+.temper:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+
+
+.temper::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 150px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+
+.osv {
+  background: linear-gradient(-90deg, #FFF280 15.55%, #FFE245 24.92%, #262A8D 74.4%, #0E0B32 101.48%);
+border-radius: 50px;
+	background-size: cover;
+	border:1px solid mediumpurple;
+	margin-bottom: 50px;
+}
+
+.vl {
+   background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(90deg, rgba(196, 196, 196, 0) 10.42%, #00B2FF 57.29%);
+	border: 1px solid #2195C7;
+	border-radius: 50px;
+	margin-bottom: 50px;
+}
+
+.kis {
+	background: linear-gradient(90deg, #CA6217 8.27%, #CF8036 43.69%, #42FF00 108.27%);
+border: 1px solid #2195C7;
+		border-radius: 50px;
+	margin-bottom: 50px;
+}
+
+.te {
+	background: linear-gradient(180deg, #FF5A5A 8.27%, #D66C6C 48.9%, #00FFE0 108.27%);
+border: 1px solid #2195C7;
+	border-radius: 50px;
+}
+
+   .footer {
+    position: absolute; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: linear-gradient(180deg, #7451B1 0%, #3E3B68 100%), linear-gradient(0deg, #393664, #393664), linear-gradient(0deg, #005903, #005903); /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+	   margin-bottom: -170px;
+   }
+
+   .fr {
+	   position: fixed;
+	   padding: 10px;
+   }
